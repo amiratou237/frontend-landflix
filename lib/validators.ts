@@ -42,9 +42,6 @@ export function validateHttpUrl(
     ) {
       return { ok: false, message: `${field} must be a valid http(s) URL` };
     }
-    if (field === "video_url" && !value.toLowerCase().includes("uqload")) {
-      return { ok: false, message: "video_url must contain uqload" };
-    }
     return { ok: true, value: url.toString() };
   } catch {
     return { ok: false, message: `${field} must be a valid http(s) URL` };

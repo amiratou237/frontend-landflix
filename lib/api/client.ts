@@ -227,6 +227,17 @@ export function getResolveStatus(
   );
 }
 
+export function downloadFile(
+  taskId: string,
+  signal?: AbortSignal,
+): Promise<Response> {
+  return fetch(`/api/download/${encodeURIComponent(taskId)}/file`, {
+    method: "GET",
+    cache: "no-store",
+    ...(signal ? { signal } : {}),
+  });
+}
+
 export function getLatestRelease(
   signal?: AbortSignal,
 ): Promise<ApiResult<{ latest_release_version: string }>> {

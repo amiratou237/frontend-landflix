@@ -16,6 +16,7 @@ export type ResolveState =
 export function usePollTask(videoUrl: string): {
   state: ResolveState;
   start: () => void;
+  taskId: string | null;
 } {
   const [attempt, setAttempt] = useState(0);
   const [state, setState] = useState<ResolveState>({ status: "idle" });
@@ -103,5 +104,5 @@ export function usePollTask(videoUrl: string): {
     setAttempt((current) => current + 1);
   }, []);
 
-  return { state, start };
+  return { state, start, taskId: taskIdRef.current };
 }

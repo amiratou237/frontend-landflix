@@ -21,13 +21,13 @@ describe("validation des entrées proxy", () => {
     expect(validateProvider("French Stream").ok).toBe(false);
   });
 
-  it("limite les URL à http(s) et exige UQload pour une vidéo", () => {
+  it("limite les URL à http(s)", () => {
     expect(
       validateHttpUrl("https://catalogue.example/media/1", "media_url").ok,
     ).toBe(true);
     expect(validateHttpUrl("javascript:alert(1)", "media_url").ok).toBe(false);
     expect(validateHttpUrl("https://example.com/video", "video_url").ok).toBe(
-      false,
+      true,
     );
     expect(
       validateHttpUrl("https://uqload.example/embed", "video_url").ok,
